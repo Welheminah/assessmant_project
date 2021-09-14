@@ -1,8 +1,8 @@
 module.exports = function pizza(){
 
-var smallPizza  = 47;
-var mediumPizza = 85;
-var largePizza  = 110;
+var smallPizzaPrice  = 47;
+var mediumPizzaPrice = 85;
+var largePizzaPrice  = 110;
 
 var smallTotal = 0;
 var mediumTotal = 0;
@@ -22,53 +22,57 @@ function orderLarge(){
 }
 
 function updateTotalSmall(){
-    smallTotal += smallPizza;
-    grandtotal += smallPizza;
+    smallTotal += smallPizzaPrice;
+    grandtotal += smallPizzaPrice;
 }
 
 function updateTotalMedium(){
-    mediumTotal += mediumPizza;
-    grandtotal += mediumPizza;
+    mediumTotal += mediumPizzaPrice;
+    grandtotal += mediumPizzaPrice;
 }
 
 function updateTotalLarge(){
-    largeTotal += largePizza;
-    grandtotal += largePizza;
+    largeTotal += largePizzaPrice;
+    grandtotal += largePizzaPrice;
 }
 
 function oneDownSmall(){
-if (smallTotal >= 0){
-    return  smallPizza--;
-}else{
-    return smallTotal = 0;
-}
 
+    if (smallTotal > 0){
+        smallTotal = smallTotal - smallPizzaPrice;
+    }else{
+        smallTotal = 0;
+    }
+    return smallTotal;
 }
 
 function oneDownMedium(){
-    if (mediumTotal >= 0){
-        return  mediumPizza--
+    if (mediumTotal > 0){
+        mediumTotal = mediumTotal - mediumPizzaPrice;
     }else{
-        return mediumPizza = 0;
+         mediumTotal = 0;
     }
+    return mediumTotal;
 }
 
 function oneDownLarge(){
     if (largeTotal >= 0){
-        return  largePizza--
+        largeTotal = largeTotal- largePizzaPrice;
     }else{
-        return largePizza = 0;
+         largePizzaPrice = 0;
     }
+    return largeTotal;
 }
 
 function totalCost(){
     return grandtotal
 }
 
-function orderPizza(pizzaSize){
-    smallTotal = Number(pizzaSize.smallTotal),
-    mediumTotal = Number(pizzaSize.mediumTotal)
-    largeTotal = Number(pizzaSize.largeTotal)
+function orderPizza(){
+   smallTotal = '';
+   mediumTotal = '',
+   largeTotal = ''
+   grandtotal = '';
 
 }
 

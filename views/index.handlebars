@@ -9,6 +9,12 @@
 </head>
 
 <body>
+
+    <div class="header">
+        
+        <h1>Zandile's Perfect Pizza</h1>
+         <a href="/views/order.handlebars"><img src="cart.png" alt=""></a>
+        </div>
     <div>
         <h3>Cart </h3>
         
@@ -17,23 +23,23 @@
             <a href="/pizza/add">Add pizza</a>
         </div> --}}
         
-       <form action="/minusSmall" method="GET"><p>small: <button class="but button1">-</button>
+       <form action="/minusSmall" method="GET"><p>Small Pizza: <button class="but button1">-</button>
        <button class="but button1">+</button
        >R{{small}}.00</p>
        </form>
 
-       <form action="/minusMedium" method="GET"><p>medium: <button class="but button1">-</button>
+       <form action="/minusMedium" method="GET"><p>Medium Pizza: <button class="but button1">-</button>
        <button class="but button1">+</button
        >R{{medium}}.00</p>
        </form>
 
-       <form action="/minusLarge" method="GET"><p>large: <button class="but button1">-</button>
+       <form action="/minusLarge" method="GET"><p>Large Pizza: <button class="but button1">-</button>
        <button class="but button1">+</button
        >R{{large}}.00</p>
        </form>
-        <p>Total: R{{total}}.00</p>
-        <form action="">
-            <button class="placeOrder">Place Order</button>
+        <p class="grandTotal">Grand Total: R{{total}}.00</p>
+        <form action="/order" method="POST">
+            <button class="placeOrder" type="submit">Place Order</button>
         </form><br>
         {{!-- <table>
             <tr>
@@ -48,8 +54,8 @@
                 <div class="info">
                     <img src="pizza.png" alt="">
                     <h2>Medium Pizza</h2>
-                    <button name="medium">85.00</button>
-
+                    <strong>R85.00</strong>
+                    <br>
                     <div>
                         medium margeritha pizza with 3 toppings max.
                         2 or less meat topping.
@@ -69,7 +75,7 @@
             <div class="info">
                 <img src="pizza.png" alt="">
                 <h2>Large Pizza</h2>
-                <button name="large">110.00</button>
+                <strong>R110.00</strong>
                 <div>
                     large margeritha pizza with 3 toppings max.
                     3 meat toppings max.
@@ -86,7 +92,7 @@
             <div class="info">
                 <img src="pizza.png" alt="">
                 <h2>Small Pizza</h2>
-                <button name="small">47.00</button><br>
+                <strong>R47.00</strong><br>
                 small pizza with 3 toppings.
                 1 meat topping.
                 3 or less other toppings.

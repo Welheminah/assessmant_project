@@ -65,32 +65,33 @@ app.post('/quantityLarge', function (req, res) {
 
 app.get('/minusSmall', function (req, res) {
 
-	var minusS = pizzaFunc.oneDownSmall()
-	res.render('index', {
-		minusS
-	});
-	console.log(minusS)
-
+	pizzaFunc.oneDownSmall()
+	
+	res.redirect('/')
 });
 
 app.get('/minusMedium', function (req, res) {
 
-	var minusM = pizzaFunc.oneDownMedium()
-
-	res.render('index', {
-		minusM
-	});
-
+	pizzaFunc.oneDownMedium()
+	res.redirect('/')
+	
 });
 
 app.get('/minusLarge', function (req, res) {
 
-	var minusL = pizzaFunc.oneDownLarge()
-	res.render('index', {
-		minusL
-	});
+	pizzaFunc.oneDownLarge()
+	res.redirect('/')
 
 });
+
+app.post('/order', function (req, res) {
+
+	pizzaFunc.orderPizza()
+
+	res.redirect('/')
+});
+
+
 
 // start  the server and start listening for HTTP request on the PORT number specified...
 app.listen(PORT, function () {
