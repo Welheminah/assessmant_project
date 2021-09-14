@@ -1,11 +1,11 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
-const pizzaFactory = require('./pizza');
+const pizza = require('./pizza');
 
 const app = express();
 const PORT = process.env.PORT || 3017;
 
-let pizzaFunc = pizzaFactory;
+const pizzaFunc = pizza();
 
 // enable the req.body object - to allow us to use HTML forms
 app.use(express.json());
@@ -21,56 +21,76 @@ app.use(express.static('public'));
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-var smallTotal = 0;
-var mediumTotal = 0;
-var largeTotal = 0;
+
 
 app.get('/', function (req, res) {
-	// console.log(small)
+
+	var small = pizzaFunc.orderSmall();
+	var medium = pizzaFunc.orderMedium();
+	var large = pizzaFunc.orderLarge();
+	var total = pizzaFunc.totalCost();
 	res.render('index', {
-		
-		small: pizzaFunc.orderSmall,
-		medium: pizzaFunc.orderMedium,
-		large: pizzaFunc.orderLarge,
-		
+
+		small,
+		medium,
+		large,
+		total
+
 	});
-	
+	// console.log(small)
 });
 
-// app.post('/console.log(small)', function (req, res) {
-	
-// 		mediumPizza: req.body.medium,
-// 	res.redirect('/')
-// });
 
-app.post('/quantitySmall', function (req, res) {
-	var order = {
-		smallPizza: req.body.small,
 
-	}
+
+app.post('/quantityMedium', function (req, res) {
+
+	pizzaFunc.updateTotalMedium()
 	res.redirect('/')
 });
 
-// app.post('/quantityLarge', function (req, res) {
-// 	var order = {
-// 		mediumPizza: req.body.medium,
-// 		smallPizza: req.body.small,
-// 		largePizza: req.body.large
+app.post('/quantitySmall', function (req, res) {
 
-// 	}
-// 	res.redirect('/')
-// });
+	pizzaFunc.updateTotalSmall()
+	res.redirect('/')
+});
 
-// app.post('/quantityLarge', function (req, res) {
-// 	var order = {
-// 		mediumPizza: req.body.medium,
-// 		smallPizza: req.body.small,
-// 		largePizza: req.body.large
+app.post('/quantityLarge', function (req, res) {
 
-// 	}
-// 	res.redirect('/')
-// });
+	pizzaFunc.updateTotalLarge()
 
+	res.redirect('/')
+});
+
+
+app.get('/minusSmall', function (req, res) {
+
+	var minusS = pizzaFunc.oneDownSmall()
+	res.render('index', {
+		minusS
+	});
+	console.log(minusS)
+
+});
+
+app.get('/minusMedium', function (req, res) {
+
+	var minusM = pizzaFunc.oneDownMedium()
+
+	res.render('index', {
+		minusM
+	});
+
+});
+
+app.get('/minusLarge', function (req, res) {
+
+	var minusL = pizzaFunc.oneDownLarge()
+	res.render('index', {
+		minusL
+	});
+
+});
 
 // start  the server and start listening for HTTP request on the PORT number specified...
 app.listen(PORT, function () {

@@ -29,6 +29,21 @@ body {
 	background-color: #8d0801;
   }
 
+form .placeOrder {
+	padding: 1em;
+	margin: 1em;
+	font-size: 1em;
+	background-color: #bf0603;
+	/* border-radius: 0.25em; */
+	border: 0 solid snow;
+	color: snow;
+	
+}
+
+form .placeOrder:hover {
+	background-color: #8d0801;
+  } 
+
 /* .container {
 	background-color: #CDD93F;
 	padding: 1em;
@@ -214,6 +229,22 @@ body {
 	background-color: #708d81;
 }
 
+form .but {
+	background-color: #bf0603; /* Green */
+	border: none;
+	color: white;
+	padding: 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 10px;
+	margin: 4px 2px;
+	cursor: pointer;
+  }
+
+.button1 {
+	border-radius: 50%;
+}
 label {
 	font-weight: bold;
 }
